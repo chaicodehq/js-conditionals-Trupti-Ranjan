@@ -32,4 +32,21 @@
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
   // Your code here
+  let basePrice;
+  if (size === "small") basePrice = 3.0;
+  else if (size === "medium") basePrice = 4.0;
+  else if (size === "large") basePrice = 5.0;
+  else return -1;
+
+  let typePrice;
+  if (type === "regular") typePrice = 0.0;
+  else if (type === "latte") typePrice = 1.0;
+  else if (type === "cappuccino") typePrice = 1.5;
+  else if (type === "mocha") typePrice = 2.0;
+  else return -1; // invalid type
+
+  const extrasPrice =
+    (extras.whippedCream ? 0.5 : 0) + (extras.extraShot ? 0.75 : 0);
+
+  return parseFloat((basePrice + typePrice + extrasPrice).toFixed(2));
 }
